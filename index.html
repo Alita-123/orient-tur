@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orient Tour | Orta Doğu, Balkanlar ve Orta Asya Turları</title>
+<meta name="description" content="İstanbul merkezli Orient Tour ile Balkanlar, Orta Doğu ve Orta Asya'ya küçük gruplarla, Türkçe rehberlikte turlar.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M4 30V16Q4 7 16 2Q28 7 28 16V30Z' fill='%2312294a'/><path d='M16 11l2 4 4 1-4 1-2 4-2-4-4-1 4-1z' fill='%23f2a541'/></svg>">
+<style>
+:root{
+  --bg:#eef2f4; --ink:#0e2238; --muted:#546879; --card:#fff; --line:#cfd9de;
+  --night:#0e2238; --night2:#16385c; --teal:#0f8b8d; --gold:#f2a541; --onnight:#e9f0f5;
+}
+@media (prefers-color-scheme: dark){
+  :root{--bg:#0a1623;--ink:#e6eef4;--muted:#93a9ba;--card:#112336;--line:#223a52;--night:#06101a;--night2:#0c2236;--teal:#3cc3c5}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:17px}
+h1,h2,h3,.logo b{font-family:"Palatino Linotype",Palatino,Georgia,serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+header{position:sticky;top:0;z-index:20;background:var(--night);color:var(--onnight);border-bottom:1px solid #ffffff1f}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;line-height:1}
+.logo svg{width:30px;height:36px;flex:none}
+.logo b{font-size:1.4rem;letter-spacing:.01em}
+.logo small{display:block;font-family:"Segoe UI",system-ui,sans-serif;font-size:.68rem;color:var(--gold);margin-top:4px;letter-spacing:.14em}
+nav{display:flex;align-items:center;gap:22px;font-size:.95rem}
+nav a{text-decoration:none;opacity:.85}
+nav a:hover{opacity:1}
+nav .cta{background:var(--gold);color:#1a1405;padding:9px 18px;border-radius:999px;font-weight:600;opacity:1}
+
+.hero{background:linear-gradient(180deg,var(--night),var(--night2));color:var(--onnight);padding:56px 0 64px}
+.hero .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:32px;align-items:center}
+.hero h1{font-size:clamp(2.3rem,5.4vw,3.7rem);line-height:1.08;letter-spacing:-.01em}
+.hero p{margin-top:20px;max-width:40ch;color:#b9cadb;font-size:1.08rem}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-block;padding:13px 26px;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid transparent;font-size:1rem;cursor:pointer;font-family:inherit}
+.btn.gold{background:var(--gold);color:#1a1405}
+.btn.line{border-color:#ffffff55;color:var(--onnight)}
+.btn.line:hover{border-color:var(--gold)}
+.map{width:100%;height:auto}
+.route{fill:none;stroke:var(--gold);stroke-width:2;stroke-dasharray:6 7;stroke-linecap:round}
+.dot{fill:var(--gold)}
+.city{fill:#e9f0f5;font:13px "Segoe UI",system-ui,sans-serif}
+.region{fill:#6f8aa3;font:italic 15px Georgia,serif}
+.home{fill:#fff;stroke:var(--gold);stroke-width:3}
+@media (prefers-reduced-motion:no-preference){
+  .route{stroke-dasharray:600;stroke-dashoffset:600;animation:draw 2.4s .3s ease-out forwards}
+  .route.r2{animation-delay:.9s}.route.r3{animation-delay:1.5s}
+  @keyframes draw{to{stroke-dashoffset:0;stroke-dasharray:6 7}}
+}
+
+section{padding:64px 0}
+h2{font-size:clamp(1.7rem,3.6vw,2.3rem);line-height:1.15;margin-bottom:10px}
+.lead{color:var(--muted);max-width:56ch;margin-bottom:28px}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.filters button{font:inherit;font-size:.95rem;padding:8px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+.board{border-top:3px solid var(--ink)}
+.row{display:grid;grid-template-columns:120px 1fr 90px 150px 130px;gap:16px;align-items:center;padding:20px 4px;border-bottom:1px solid var(--line)}
+.row[hidden]{display:none}
+.tag{font-size:.82rem;font-weight:600;padding:4px 10px;border-radius:6px;text-align:center;width:max-content}
+.tag.bal{background:#dff1ec;color:#0a5e4a}
+.tag.od{background:#fbe8cc;color:#7a4a05}
+.tag.oa{background:#dde6f7;color:#1c3f86}
+@media (prefers-color-scheme: dark){.tag.bal{background:#12423a;color:#8fe3cb}.tag.od{background:#4a3410;color:#f6cf8d}.tag.oa{background:#1d3157;color:#b4cbf5}}
+.row h3{font-size:1.2rem}
+.row p{color:var(--muted);font-size:.93rem}
+.days{font-weight:600}
+.season{font-size:.92rem;color:var(--muted)}
+.price{font-family:Georgia,serif;font-size:1.35rem;font-weight:700}
+.price small{display:block;font:400 .72rem "Segoe UI",system-ui,sans-serif;color:var(--muted)}
+.ask{display:inline-block;margin-top:4px;font-size:.9rem;font-weight:600;color:var(--teal);text-decoration:none}
+.ask:hover{text-decoration:underline}
+.fine{margin-top:14px;font-size:.88rem;color:var(--muted)}
+
+.why{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.why ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:30px;margin-top:26px}
+.why h3{font-size:1.15rem;margin-bottom:6px}
+.why p{color:var(--muted);font-size:.97rem}
+.why li{border-top:3px solid var(--teal);padding-top:14px}
+
+.contact .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:40px}
+.contact address{font-style:normal;margin-top:18px;line-height:1.9}
+.contact address a{color:var(--teal);font-weight:600}
+form{display:grid;gap:14px}
+label{font-size:.92rem;font-weight:600;display:grid;gap:5px}
+input,select,textarea{font:inherit;padding:11px 13px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);width:100%}
+textarea{min-height:100px;resize:vertical}
+form .btn{background:var(--night);color:var(--onnight);justify-self:start}
+@media (prefers-color-scheme: dark){form .btn{background:var(--gold);color:#1a1405}}
+
+footer{background:var(--night);color:#9db2c4;padding:26px 0;font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+@media (max-width:860px){
+  .hero .wrap,.contact .wrap{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr 1fr;gap:8px 16px}
+  .row>div:nth-child(2){grid-column:1/-1;order:-1}
+  .row .tag{order:-2}
+  nav a:not(.cta){display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Orient Tour ana sayfa">
+      <svg viewBox="0 0 32 38" aria-hidden="true">
+        <path d="M3 37V18Q3 7 16 1Q29 7 29 18V37Z" fill="none" stroke="#f2a541" stroke-width="2"/>
+        <path d="M16 11l2.4 5.6 5.6 2.4-5.6 2.4L16 27l-2.4-5.6L8 19l5.6-2.4z" fill="#f2a541"/>
+      </svg>
+      <span><b>Orient Tour</b><small>İSTANBUL</small></span>
+    </a>
+    <nav aria-label="Ana menü">
+      <a href="#turlar">Turlar</a>
+      <a href="#neden">Neden biz</a>
+      <a href="#iletisim" class="cta">Teklif al</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>İstanbul'dan Balkanlara, Ürdün'e, İpek Yolu'na.</h1>
+        <p>Küçük gruplar, Türkçe rehberlik ve baştan sona planlanmış rotalar. Siz yolculuğun tadını çıkarın.</p>
+        <div class="btns">
+          <a class="btn gold" href="#turlar">Turları gör</a>
+          <a class="btn line" href="#iletisim">Bize yazın</a>
+        </div>
+      </div>
+      <svg class="map" viewBox="0 0 560 380" role="img" aria-label="İstanbul'dan Balkanlar, Orta Doğu ve Orta Asya'ya giden rotalar">
+        <path class="route r1" d="M250 190 Q200 130 120 110"/>
+        <path class="route r1" d="M250 190 Q190 190 90 175"/>
+        <path class="route r2" d="M250 190 Q290 260 300 320"/>
+        <path class="route r3" d="M250 190 Q380 80 480 90"/>
+        <path class="route r3" d="M250 190 Q400 150 520 190"/>
+        <circle class="dot" cx="120" cy="110" r="5"/><text class="city" x="60" y="98">Belgrad</text>
+        <circle class="dot" cx="90" cy="175" r="5"/><text class="city" x="34" y="200">Saraybosna</text>
+        <circle class="dot" cx="300" cy="320" r="5"/><text class="city" x="314" y="326">Amman</text>
+        <circle class="dot" cx="480" cy="90" r="5"/><text class="city" x="440" y="76">Bişkek</text>
+        <circle class="dot" cx="520" cy="190" r="5"/><text class="city" x="462" y="215">Semerkant</text>
+        <circle class="home" cx="250" cy="190" r="9"/><text class="city" x="236" y="170" style="font-weight:700">İstanbul</text>
+        <text class="region" x="70" y="40">Balkanlar</text>
+        <text class="region" x="330" y="360">Orta Doğu</text>
+        <text class="region" x="420" y="140">Orta Asya</text>
+      </svg>
+    </div>
+  </div>
+
+  <section id="turlar">
+    <div class="wrap">
+      <h2>Çıkış tahtası</h2>
+      <p class="lead">Üç bölge, altı rota. Fiyatlar kişi başı, iki kişilik odada konaklama esaslıdır.</p>
+
+      <div class="filters" role="group" aria-label="Bölgeye göre filtrele">
+        <button type="button" data-f="all" aria-pressed="true">Tümü</button>
+        <button type="button" data-f="bal" aria-pressed="false">Balkanlar</button>
+        <button type="button" data-f="od" aria-pressed="false">Orta Doğu</button>
+        <button type="button" data-f="oa" aria-pressed="false">Orta Asya</button>
+      </div>
+
+      <div class="board" id="board">
+        <article class="row" data-r="bal">
+          <span class="tag bal">Balkanlar</span>
+          <div><h3>Balkan Başkentleri</h3><p>Sofya, Belgrad, Saraybosna</p></div>
+          <span class="days">7 gün</span>
+          <span class="season">Nisan – Ekim</span>
+          <div><span class="price">790 €<small>kişi başı</small></span><a class="ask" href="mailto:info@orienttour.example?subject=Balkan%20Ba%C5%9Fkentleri%20tur%20bilgisi">Bilgi iste</a></div>
+        </article>
+        <article class="row" data-r="bal">
+          <span class="tag bal">Balkanlar</span>
+          <div><h3>Adriyatik'e Balkan Yolu</h3><p>Üsküp, Ohri, Tiran, Kotor, Mostar</p></div>
+          <span class="days">9 gün</span>
+          <span class="season">Mayıs – Eylül</span>
+          <div><span class="price">1.090 €<small>kişi başı</small></span><a class="ask" href="mailto:info@orienttour.example?subject=Adriyatik%27e%20Balkan%20Yolu%20tur%20bilgisi">Bilgi iste</a></div>
+        </article>
+        <article class="row" data-r="od">
+          <span class="tag od">Orta Doğu</span>
+          <div><h3>Petra ve Wadi Rum</h3><p>Amman, Petra, Wadi Rum, Ölü Deniz</p></div>
+          <span class="days">5 gün</span>
+          <span class="season">Mart – Mayıs, Ekim – Kasım</span>
+          <div><span class="price">690 €<small>kişi başı</small></span><a class="ask" href="mailto:info@orienttour.example?subject=Petra%20ve%20Wadi%20Rum%20tur%20bilgisi">Bilgi iste</a></div>
+        </article>
+        <article class="row" data-r="od">
+          <span class="tag od">Orta Doğu</span>
+          <div><h3>Umman: Çöl ve Fiyortlar</h3><p>Maskat, Nizva, Wahiba, Musandam</p></div>
+          <span class="days">7 gün</span>
+          <span class="season">Ekim – Nisan</span>
+          <div><span class="price">1.150 €<small>kişi başı</small></span><a class="ask" href="mailto:info@orienttour.example?subject=Umman%20tur%20bilgisi">Bilgi iste</a></div>
+        </article>
+        <article class="row" data-r="oa">
+          <span class="tag oa">Orta Asya</span>
+          <div><h3>Özbekistan İpek Yolu</h3><p>Taşkent, Semerkant, Buhara, Hive</p></div>
+          <span class="days">8 gün</span>
+          <span class="season">Nisan – Ekim</span>
+          <div><span class="price">1.190 €<small>kişi başı</small></span><a class="ask" href="mailto:info@orienttour.example?subject=%C3%96zbekistan%20%C4%B0pek%20Yolu%20tur%20bilgisi">Bilgi iste</a></div>
+        </article>
+        <article class="row" data-r="oa">
+          <span class="tag oa">Orta Asya</span>
+          <div><h3>Kırgızistan Dağ Gölleri</h3><p>Bişkek, Issık Göl, Karakol, Song Kul</p></div>
+          <span class="days">7 gün</span>
+          <span class="season">Haziran – Eylül</span>
+          <div><span class="price">980 €<small>kişi başı</small></span><a class="ask" href="mailto:info@orienttour.example?subject=K%C4%B1rg%C4%B1zistan%20tur%20bilgisi">Bilgi iste</a></div>
+        </article>
+      </div>
+      <p class="fine">Fiyatlar örnektir. Uçuşlar, vize ve ekstra turlar her turun programında ayrıca belirtilir.</p>
+    </div>
+  </section>
+
+  <section id="neden" class="why">
+    <div class="wrap">
+      <h2>Nasıl çalışıyoruz?</h2>
+      <ul>
+        <li><h3>En fazla 16 kişi</h3><p>Küçük gruplarda her gezgin rehberle konuşabilir, program esner.</p></li>
+        <li><h3>Türkçe rehber</h3><p>Her turda yerel bilgiyi bilen, İstanbul'dan sizinle çıkan bir rehber.</p></li>
+        <li><h3>Vize ve uçuş desteği</h3><p>Belgeleri ve bilet planını biz takip ederiz, size liste göndeririz.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="iletisim" class="contact">
+    <div class="wrap">
+      <div>
+        <h2>Rotanızı birlikte seçelim</h2>
+        <p class="lead">Formu doldurun, aynı gün içinde dönüş yapalım.</p>
+        <address>
+          Divanyolu Caddesi, Sultanahmet<br>Fatih / İstanbul<br>
+          <a href="tel:+902120000000">0212 000 00 00</a><br>
+          <a href="mailto:info@orienttour.example">info@orienttour.example</a><br>
+          Pazartesi – Cumartesi, 09:30 – 18:30<br>
+          <small>TÜRSAB belge no: A-0000 (örnek)</small>
+        </address>
+      </div>
+      <form id="f">
+        <label>Adınız<input name="ad" required autocomplete="name"></label>
+        <label>İlgilendiğiniz tur
+          <select name="tur">
+            <option>Henüz karar vermedim</option>
+            <option>Balkan Başkentleri</option>
+            <option>Adriyatik'e Balkan Yolu</option>
+            <option>Petra ve Wadi Rum</option>
+            <option>Umman: Çöl ve Fiyortlar</option>
+            <option>Özbekistan İpek Yolu</option>
+            <option>Kırgızistan Dağ Gölleri</option>
+          </select>
+        </label>
+        <label>Mesajınız<textarea name="mesaj" placeholder="Kaç kişi, hangi ay yola çıkmak istiyorsunuz?"></textarea></label>
+        <button class="btn" type="submit">E-posta ile gönder</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© <span id="y">2026</span> Orient Tour, İstanbul</span><span>Bilgiler örnek amaçlıdır.</span></div>
+</footer>
+
+<script>
+document.getElementById("y").textContent=new Date().getFullYear();
+var btns=document.querySelectorAll(".filters button"),rows=document.querySelectorAll(".row");
+btns.forEach(function(b){b.addEventListener("click",function(){
+  btns.forEach(function(x){x.setAttribute("aria-pressed",x===b)});
+  rows.forEach(function(r){r.hidden=b.dataset.f!=="all"&&r.dataset.r!==b.dataset.f});
+})});
+document.getElementById("f").addEventListener("submit",function(e){
+  e.preventDefault();
+  var d=new FormData(e.target);
+  location.href="mailto:info@orienttour.example?subject="+encodeURIComponent("Tur talebi: "+d.get("tur"))+"&body="+encodeURIComponent(d.get("mesaj")+"\n\n"+d.get("ad"));
+});
+</script>
+</body>
+</html>
